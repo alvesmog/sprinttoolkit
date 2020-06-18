@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+
     <style>
         /* Space out content a bit */
         body {
@@ -61,11 +64,23 @@
         .jumbotron {
             text-align: center;
             border-bottom: 0.05rem solid #e5e5e5;
+            height: 450px;
         }
 
         .jumbotron .btn {
             padding: 0.75rem 1.5rem;
             font-size: 1.5rem;
+        }
+
+        .row>div {
+            max-height: 320px;
+        }
+
+        #resultados {
+            border-style: solid;
+            border-radius: 5px;
+            border-width: 1px;
+            border-color: #777;
         }
 
         /* Supporting marketing content */
@@ -97,6 +112,12 @@
             .jumbotron {
                 border-bottom: 0;
             }
+
+            #resultados>p {
+                border-bottom: 1px solid #000;
+            }
+
+
         }
     </style>
 </head>
@@ -127,9 +148,9 @@
                         <form id="parametros">
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Método de pontuação</label>
+                                <i class="fa fa-question-circle" aria-hidden="true" style="cursor: pointer"></i>
                                 <select class="form-control" id="metodo">
                                     <option>Fibonacci</option>
-                                    <option>2</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -145,8 +166,8 @@
                                 combinações</button>
                         </form>
                     </div>
-                    <div class="col-lg-6" style="background-color: white;">
-                        <p>teste</p>
+                    <div class="col-lg-6 overflow-auto" id="resultados" style="background-color: white;">
+
                     </div>
                 </div>
             </div>
@@ -175,14 +196,14 @@
         let pontuacao;
 
         function submeterParametros() {
+            $('#resultados').empty();
+
             var button = document.getElementById("mostrarCombinacoes");
 
-            button.onclick = function () {
-                metodo = button.form.metodo.value;
-                qtdUS = parseInt(button.form.qtdUS.value);
-                pontuacao = parseInt(button.form.pontuacao.value);
-                mostrarCombinacoes(metodo, qtdUS, pontuacao);
-            }
+            metodo = button.form.metodo.value;
+            qtdUS = parseInt(button.form.qtdUS.value);
+            pontuacao = parseInt(button.form.pontuacao.value);
+            mostrarCombinacoes(metodo, qtdUS, pontuacao);
 
         }
 
@@ -194,59 +215,45 @@
 
             var fibo = [1, 3, 5, 8, 13, 21, 34, 55];
 
-            console.log(k_combinations(fibo, qtdUS));
-            getComboSums(fibo, qtdUS).map( (el, index) => {
-                if(el==pontuacao){
-                    console.log("Soma: "+el+" | Indice: "+index)
+            getComboSums(fibo, qtdUS).map((el, index) => {
+                if (el == pontuacao) {
+                    console.log("Soma: " + el + " | Indice: " + index + " | Array: " + combRep(fibo, qtdUS)[index]);
+                    $("#resultados").append("<p>" + combRep(fibo, qtdUS)[index] + "</p>");
                 }
             })
+
+            if ($('#resultados').is(':empty')) {
+                $("#resultados").append("<p>Não há nenhuma combinação possível que atenda simultaneamente a pontuação e a quantidade de US inseridas.</p>");
+            }
+
 
         }
 
         function getComboSums(set, k) {
-            return k_combinations(set, k).map(function (a) {
+            return combRep(set, k).map(function (a) {
                 var sum = 0;
                 a.forEach(function (v) { sum += v })
                 return sum;
             });
         }
 
-        function k_combinations(set, k) {
-            var i, j, combs, head, tailcombs;
-
-            // There is no way to take e.g. sets of 5 elements from
-            // a set of 4.
-            if (k > set.length || k <= 0) {
-                return [];
-            }
-
-            // K-sized set has only one K-sized subset.
-            if (k == set.length) {
-                return [set];
-            }
-
-            // There is N 1-sized subsets in a N-sized set.
-            if (k == 1) {
-                combs = [];
-                for (i = 0; i < set.length; i++) {
-                    combs.push([set[i]]);
+        function combRep(arr, l) {
+            if (l === void 0) l = arr.length; // Length of the combinations
+            var data = Array(l),             // Used to store state
+                results = [];                // Array of results
+            (function f(pos, start) {        // Recursive function
+                if (pos === l) {                // End reached
+                    results.push(data.slice());  // Add a copy of data to results
+                    return;
                 }
-                return combs;
-            }
-            combs = [];
-            for (i = 0; i < set.length - k + 1; i++) {
-                // head is a list that includes only our current element.
-                head = set.slice(i, i + 1);
-                // We take smaller combinations from the subsequent elements
-                tailcombs = k_combinations(set.slice(i + 1), k - 1);
-                // For each (k-1)-combination we join it with the current
-                // and store it to the set of k-combinations.
-                for (j = 0; j < tailcombs.length; j++) {
-                    combs.push(head.concat(tailcombs[j]));
+                for (var i = start; i < arr.length; ++i) {
+                    data[pos] = arr[i];          // Update data
+                    f(pos + 1, i);                 // Call f recursively
                 }
-            }
-            return combs;
+            })(0, 0);                        // Start at index 0
+            return results;                  // Return results
         }
+
     </script>
 </body>
 
