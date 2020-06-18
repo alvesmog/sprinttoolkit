@@ -10,6 +10,95 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        /* Space out content a bit */
+        body {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+
+        /* Everything but the jumbotron gets side spacing for mobile first views */
+        .header,
+        .marketing,
+        .footer {
+            padding-right: 1rem;
+            padding-left: 1rem;
+        }
+
+        /* Custom page header */
+        .header {
+            padding-bottom: 1rem;
+            border-bottom: 0.05rem solid #e5e5e5;
+        }
+
+        /* Make the masthead heading the same height as the navigation */
+        .header h3 {
+            margin-top: 0;
+            margin-bottom: 0;
+            line-height: 3rem;
+        }
+
+        /* Custom page footer */
+        .footer {
+            padding-top: 1.5rem;
+            color: #777;
+            border-top: 0.05rem solid #e5e5e5;
+        }
+
+        /* Customize container */
+        @media (min-width: 48em) {
+            .container {
+                max-width: 46rem;
+            }
+        }
+
+        .container-narrow>hr {
+            margin: 2rem 0;
+        }
+
+        /* Main marketing message and sign up button */
+        .jumbotron {
+            text-align: center;
+            border-bottom: 0.05rem solid #e5e5e5;
+        }
+
+        .jumbotron .btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        /* Supporting marketing content */
+        .marketing {
+            margin: 3rem 0;
+        }
+
+        .marketing p+h4 {
+            margin-top: 1.5rem;
+        }
+
+        /* Responsive: Portrait tablets and up */
+        @media screen and (min-width: 48em) {
+
+            /* Remove the padding we set earlier */
+            .header,
+            .marketing,
+            .footer {
+                padding-right: 0;
+                padding-left: 0;
+            }
+
+            /* Space out the masthead */
+            .header {
+                margin-bottom: 2rem;
+            }
+
+            /* Remove the bottom border on the jumbotron for visual effect */
+            .jumbotron {
+                border-bottom: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -33,18 +122,38 @@
         <main role="main">
 
             <div class="jumbotron">
-                <h1 class="display-3">Jumbotron heading</h1>
-                <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac
-                    cursus commodo, tortor mauris
-                    condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p>
-                    <a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a>
-                </p>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form id="parametros">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Método de pontuação</label>
+                                <select class="form-control" id="metodo">
+                                    <option>Fibonacci</option>
+                                    <option>2</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Quantidade de US na sprint</label>
+                                <input type="text" class="form-control" id="qtdUS">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Pontuação a atingir</label>
+                                <input type="text" class="form-control" id="pontuacao">
+                            </div>
+                            <button class="btn btn-primary" id="mostrarCombinacoes"
+                                onclick="submeterParametros()">Mostrar
+                                combinações</button>
+                        </form>
+                    </div>
+                    <div class="col-lg-6" style="background-color: white;">
+                        <p>teste</p>
+                    </div>
+                </div>
             </div>
         </main>
 
         <footer class="footer">
-            <p>&copy; Company 2017</p>
+            <p>&copy; Guilherme Augusto Alves 2020</p>
         </footer>
 
     </div>
@@ -59,6 +168,86 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script>
+
+        let metodo;
+        let qtdUS;
+        let pontuacao;
+
+        function submeterParametros() {
+            var button = document.getElementById("mostrarCombinacoes");
+
+            button.onclick = function () {
+                metodo = button.form.metodo.value;
+                qtdUS = parseInt(button.form.qtdUS.value);
+                pontuacao = parseInt(button.form.pontuacao.value);
+                mostrarCombinacoes(metodo, qtdUS, pontuacao);
+            }
+
+        }
+
+        function mostrarCombinacoes(metodo, qtdUS, pontuacao) {
+
+            console.log(metodo);
+            console.log(qtdUS);
+            console.log(pontuacao);
+
+            var fibo = [1, 3, 5, 8, 13, 21, 34, 55];
+
+            console.log(k_combinations(fibo, qtdUS));
+            getComboSums(fibo, qtdUS).map( (el, index) => {
+                if(el==pontuacao){
+                    console.log("Soma: "+el+" | Indice: "+index)
+                }
+            })
+
+        }
+
+        function getComboSums(set, k) {
+            return k_combinations(set, k).map(function (a) {
+                var sum = 0;
+                a.forEach(function (v) { sum += v })
+                return sum;
+            });
+        }
+
+        function k_combinations(set, k) {
+            var i, j, combs, head, tailcombs;
+
+            // There is no way to take e.g. sets of 5 elements from
+            // a set of 4.
+            if (k > set.length || k <= 0) {
+                return [];
+            }
+
+            // K-sized set has only one K-sized subset.
+            if (k == set.length) {
+                return [set];
+            }
+
+            // There is N 1-sized subsets in a N-sized set.
+            if (k == 1) {
+                combs = [];
+                for (i = 0; i < set.length; i++) {
+                    combs.push([set[i]]);
+                }
+                return combs;
+            }
+            combs = [];
+            for (i = 0; i < set.length - k + 1; i++) {
+                // head is a list that includes only our current element.
+                head = set.slice(i, i + 1);
+                // We take smaller combinations from the subsequent elements
+                tailcombs = k_combinations(set.slice(i + 1), k - 1);
+                // For each (k-1)-combination we join it with the current
+                // and store it to the set of k-combinations.
+                for (j = 0; j < tailcombs.length; j++) {
+                    combs.push(head.concat(tailcombs[j]));
+                }
+            }
+            return combs;
+        }
+    </script>
 </body>
 
 </html>
