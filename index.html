@@ -271,7 +271,7 @@
         let metodo;
         let qtdUS;
         let pontuacao;
-        let imagemAtiva;
+        let imagemAtiva = 0;
 
 
         function esconderImagem() {
@@ -282,10 +282,12 @@
                 case 1:
                     var popup = document.getElementById("myPopup");
                     popup.classList.toggle("show");
+                    imagemAtiva = 0;
                     break;
                 case 2:
                     var popup = document.getElementById("outro");
                     popup.classList.toggle("show");
+                    imagemAtiva = 0;
                     break;
             }
 
@@ -295,19 +297,26 @@
         }
         function mostrarImagem() {
 
-            var selectedOption = $('#metodo option:selected').val()
+            //Ja tem imagem na tela?
 
-            if (selectedOption == 1) {
-                var popup = document.getElementById("myPopup");
-                imagemAtiva = 1;
-                popup.classList.toggle("show");
+            if (imagemAtiva != 0) {
+                //Esconder a que está ativa
+                esconderImagem();
             } else {
-                var popup = document.getElementById("outro");
-                imagemAtiva = 2;
-                popup.classList.toggle("show");
+                //Já que não tem imagem na tela, renderizar a que está selecionada
+                var selectedOption = $('#metodo option:selected').val()
+                if (selectedOption == 1 && imagemAtiva == 0 || selectedOption == 1 && imagemAtiva == 1) {
+                    var popup = document.getElementById("myPopup");
+                    imagemAtiva = 1;
+                    popup.classList.toggle("show");
+                } else if (selectedOption == 2 && imagemAtiva == 0 || selectedOption == 2 && imagemAtiva == 2) {
+                    var popup = document.getElementById("outro");
+                    imagemAtiva = 2;
+                    popup.classList.toggle("show");
+                }
+
             }
-
-
+            
         }
 
         function submeterParametros() {
