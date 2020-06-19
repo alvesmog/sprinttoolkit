@@ -12,7 +12,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous">
 
     <style>
         /* Space out content a bit */
@@ -162,7 +163,7 @@
                                 <input type="text" class="form-control" id="pontuacao">
                             </div>
                             <button class="btn btn-primary" id="mostrarCombinacoes"
-                                onclick="submeterParametros()">Mostrar
+                                onclick="submeterParametros(); return false;">Mostrar
                                 combinações</button>
                         </form>
                     </div>
@@ -196,14 +197,18 @@
         let pontuacao;
 
         function submeterParametros() {
-            $('#resultados').empty();
 
-            var button = document.getElementById("mostrarCombinacoes");
+            $(function () {
+                $('#resultados').empty();
 
-            metodo = button.form.metodo.value;
-            qtdUS = parseInt(button.form.qtdUS.value);
-            pontuacao = parseInt(button.form.pontuacao.value);
-            mostrarCombinacoes(metodo, qtdUS, pontuacao);
+                var button = document.getElementById("mostrarCombinacoes");
+
+                metodo = button.form.metodo.value;
+                qtdUS = parseInt(button.form.qtdUS.value);
+                pontuacao = parseInt(button.form.pontuacao.value);
+                mostrarCombinacoes(metodo, qtdUS, pontuacao);
+
+            })
 
         }
 
