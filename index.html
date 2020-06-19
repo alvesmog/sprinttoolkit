@@ -118,6 +118,73 @@
                 border-bottom: 1px solid #000;
             }
 
+            /* Popup container - can be anything you want */
+            .popup {
+                position: relative;
+                display: inline-block;
+                cursor: pointer;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            /* The actual popup */
+            .popup .popuptext {
+                visibility: hidden;
+                width: 300px;
+                background-color: #555;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: 8px 0;
+                position: absolute;
+                z-index: 1;
+                bottom: -100px;
+                left: 100%;
+                margin-left: 10px;
+            }
+
+            /* Popup arrow */
+            .popup .popuptext::after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: #555 transparent transparent transparent;
+            }
+
+            /* Toggle this class - hide and show the popup */
+            .popup .show {
+                visibility: visible;
+                -webkit-animation: fadeIn 0.7s;
+                animation: fadeIn 0.7s;
+            }
+
+            /* Add animation (fade in the popup) */
+            @-webkit-keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+
 
         }
     </style>
@@ -149,9 +216,18 @@
                         <form id="parametros">
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Método de pontuação</label>
-                                <i class="fa fa-question-circle" aria-hidden="true" style="cursor: pointer"></i>
-                                <select class="form-control" id="metodo">
-                                    <option>Fibonacci</option>
+
+                                <div class="fa fa-question-circle popup" style="cursor: pointer"
+                                    onclick="mostrarImagem()">
+                                    <img class="popuptext" id="myPopup"
+                                        src="https://agilepink.com/wp-content/uploads/2019/10/poker.png">
+                                    <img class="popuptext" id="outro"
+                                        src="https://mk0blogplataforxca8d.kinstacdn.com/wp-content/uploads/2019/09/matriz-complexidade-incerteza.png">
+                                </div>
+
+                                <select class="form-control" id="metodo" onchange="esconderImagem()">
+                                    <option value=1>Fibonacci</option>
+                                    <option value=2>Outro</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -195,6 +271,44 @@
         let metodo;
         let qtdUS;
         let pontuacao;
+        let imagemAtiva;
+
+
+        function esconderImagem() {
+
+            //Ver quem estã sendo exibido e botar para hide
+
+            switch (imagemAtiva) {
+                case 1:
+                    var popup = document.getElementById("myPopup");
+                    popup.classList.toggle("show");
+                    break;
+                case 2:
+                    var popup = document.getElementById("outro");
+                    popup.classList.toggle("show");
+                    break;
+            }
+
+
+
+
+        }
+        function mostrarImagem() {
+
+            var selectedOption = $('#metodo option:selected').val()
+
+            if (selectedOption == 1) {
+                var popup = document.getElementById("myPopup");
+                imagemAtiva = 1;
+                popup.classList.toggle("show");
+            } else {
+                var popup = document.getElementById("outro");
+                imagemAtiva = 2;
+                popup.classList.toggle("show");
+            }
+
+
+        }
 
         function submeterParametros() {
 
