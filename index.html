@@ -219,8 +219,7 @@
 
                                 <div class="fa fa-question-circle popup" style="cursor: pointer"
                                     onclick="mostrarImagem()">
-                                    <img class="popuptext" id="myPopup"
-                                        src="https://i.imgur.com/rEzdhbf.png">
+                                    <img class="popuptext" id="myPopup" src="https://i.imgur.com/rEzdhbf.png">
                                     <img class="popuptext" id="outro"
                                         src="https://mk0blogplataforxca8d.kinstacdn.com/wp-content/uploads/2019/09/matriz-complexidade-incerteza.png">
                                 </div>
@@ -243,8 +242,11 @@
                                 combinações</button>
                         </form>
                     </div>
-                    <div class="col-lg-6 overflow-auto" id="resultados" style="background-color: white;">
+                    <div class="col-lg-6" style="background-color: white; overflow-y: scroll;">
+                        <h6>Combinações Possíveis</h6>
+                        <div id="resultados">
 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -316,7 +318,7 @@
                 }
 
             }
-            
+
         }
 
         function submeterParametros() {
