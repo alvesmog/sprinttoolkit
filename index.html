@@ -74,6 +74,10 @@
             margin-top: 0em;
         }
 
+        #avancado {
+            display: none;
+        }
+
         /* Customize container */
         @media (min-width: 48em) {
             .container {
@@ -112,7 +116,8 @@
             width: 10px;
         }
 
-        .row>div, #parametros {
+        .row>div,
+        #parametros {
             max-height: 320px;
         }
 
@@ -280,12 +285,69 @@
                                     <label for="exampleFormControlInput1">Pontuação a atingir</label>
                                     <input type="text" class="form-control" id="pontuacao">
                                 </div>
-<!--                                 <div id="console-event">
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1">Pontuações definidas</label>
-                                        <input type="text" class="form-control col-lg-2">
+                                <div id="avancado">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio1" value="option1">
+                                        <label class="form-check-label" for="inlineRadio1">Escolher pontos</label>
                                     </div>
-                                </div> -->
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio2" value="option2">
+                                        <label class="form-check-label" for="inlineRadio2">Inserir pontos</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                            value="option1">
+                                        <label class="form-check-label" for="inlineCheckbox1">0</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                            value="option2">
+                                        <label class="form-check-label" for="inlineCheckbox2">1</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                            value="option1">
+                                        <label class="form-check-label" for="inlineCheckbox1">2</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                            value="option2">
+                                        <label class="form-check-label" for="inlineCheckbox2">3</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                            value="option2">
+                                        <label class="form-check-label" for="inlineCheckbox2">5</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                            value="option1">
+                                        <label class="form-check-label" for="inlineCheckbox1">8</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                            value="option2">
+                                        <label class="form-check-label" for="inlineCheckbox2">13</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                            value="option1">
+                                        <label class="form-check-label" for="inlineCheckbox1">21</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                            value="option2">
+                                        <label class="form-check-label" for="inlineCheckbox2">34</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                            value="option2">
+                                        <label class="form-check-label" for="inlineCheckbox2">55</label>
+                                    </div>
+
+                                </div>
                                 <button class="btn btn-primary btn-block" id="mostrarCombinacoes"
                                     onclick="submeterParametros(); return false;">Mostrar
                                     combinações</button>
@@ -297,13 +359,13 @@
                             </div>
                         </div>
                     </div>
-                    
-                        <div id="togglePadraoAvancado">
-                            <input id="toggle-event" type="checkbox" unchecked data-toggle="toggle" data-on="Avançado"
-                                data-off="Padrão" data-onstyle="primary" data-offstyle="light" data-size="xs"
-                                data-width="75" data-height="15" data-style="fast">
-                        </div>
-                    
+
+                    <div id="togglePadraoAvancado">
+                        <input id="toggle-event" type="checkbox" unchecked data-toggle="toggle" data-on="Avançado"
+                            data-off="Padrão" data-onstyle="primary" data-offstyle="light" data-size="xs"
+                            data-width="75" data-height="15" data-style="fast">
+                    </div>
+
                 </div>
             </div>
         </main>
@@ -457,7 +519,11 @@
     <script>
         $(function () {
             $('#toggle-event').change(function () {
-                $('#console-event').html('Toggle: ' + $(this).prop('checked'))
+                if ($(this).prop('checked') === true){
+                    $('#avancado').css("display", "block");
+                } else {
+                    $('#avancado').css("display", "none");
+                }
             })
         })
     </script>
