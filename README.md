@@ -6,6 +6,7 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <img src="https://alvesmog.netlify.app/images/uploads/sprinttookit.gif" alt="application image" title="Application GIF">
+[Link to the application](https://alvesmog.github.io/sprinttoolkit/).
 
 Developed using vanilla JS, this tool uses combinatory analysis with repetition in order to facilitate User Stories ranking.
 
