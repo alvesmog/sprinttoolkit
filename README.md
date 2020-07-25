@@ -19,8 +19,8 @@ The calculation is done using the following mathematical formula to evaluate how
 There are two methods of combining, you can choose either the Fibonacci series or a Complexity vs Uncertainty as follows:
 
 <div style="text-align:center">
-  <img src="https://alvesmog.netlify.app/images/uploads/fibonacci-series.png" width="200" height="auto"/>
-  <img src="https://alvesmog.netlify.app/images/uploads/complexity-uncertainty.png" width="200" height="auto"/>
+  <img src="https://alvesmog.netlify.app/images/uploads/fibonacci-series.png" height="200" width="auto"/>
+  <img src="https://alvesmog.netlify.app/images/uploads/complexity-uncertainty.png" height="200" width="auto"/>
 </div>
 
 Depending on which one you choose, the formula will be fed by an array containing the corresponding mathematical set.
