@@ -1,532 +1,699 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Sprint Toolkit</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
     <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
 
     <!-- Bootstrap toggle -->
-    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
-        rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
+      rel="stylesheet"
+    />
 
     <style>
-        /* Space out content a bit */
-        body {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
+      /* Space out content a bit */
+      body {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+      }
 
-        /* Everything but the jumbotron gets side spacing for mobile first views */
+      /* Everything but the jumbotron gets side spacing for mobile first views */
+      .header,
+      .marketing,
+      .footer {
+        padding-right: 1rem;
+        padding-left: 1rem;
+      }
+
+      /* Custom page header */
+      .header {
+        padding-bottom: 1rem;
+        border-bottom: 0.05rem solid #e5e5e5;
+      }
+
+      /* Make the masthead heading the same height as the navigation */
+      .header h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 3rem;
+      }
+
+      /* Custom page footer */
+      .footer {
+        padding-top: 1.5rem;
+        color: #777;
+        border-top: 0.05rem solid #e5e5e5;
+      }
+
+      .fast .toggle-group {
+        transition: left 0.25s;
+        -webkit-transition: left 0.25s;
+      }
+
+      .jumbotron > .container > #togglePadraoAvancado {
+        display: block;
+        margin-top: 50px;
+        float: right;
+      }
+
+      .btn-light {
+        background-color: #ececec;
+      }
+
+      form {
+        display: block;
+        margin-top: 0em;
+      }
+
+      #avancado {
+        display: none;
+      }
+
+      /* Customize container */
+      @media (min-width: 48em) {
+        .container {
+          max-width: 46rem;
+        }
+      }
+
+      .container-narrow > hr {
+        margin: 2rem 0;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        text-align: center;
+        border-bottom: 0.05rem solid #e5e5e5;
+        height: 450px;
+      }
+
+      .jumbotron .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 1.5rem;
+      }
+
+      .toggle-group > span.btn {
+        padding: 0.35rem 0.8rem 0.8rem 0.8rem;
+      }
+
+      .toggle-group > label.btn {
+        padding: 0;
+        font-size: 0.75rem;
+        margin-right: 8px;
+      }
+
+      .toggle-handle {
+        background-color: white;
+        width: 10px;
+      }
+
+      .row > div,
+      #parametros {
+        max-height: 320px;
+      }
+
+      #resultados {
+        border-style: solid;
+        border-radius: 5px;
+        border-width: 1px;
+        border-color: #777;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 3rem 0;
+      }
+
+      .marketing p + h4 {
+        margin-top: 1.5rem;
+      }
+
+      /* Responsive: Portrait tablets and up */
+      @media screen and (min-width: 48em) {
+        /* Remove the padding we set earlier */
         .header,
         .marketing,
         .footer {
-            padding-right: 1rem;
-            padding-left: 1rem;
+          padding-right: 0;
+          padding-left: 0;
         }
 
-        /* Custom page header */
+        /* Space out the masthead */
         .header {
-            padding-bottom: 1rem;
-            border-bottom: 0.05rem solid #e5e5e5;
+          margin-bottom: 2rem;
         }
 
-        /* Make the masthead heading the same height as the navigation */
-        .header h3 {
-            margin-top: 0;
-            margin-bottom: 0;
-            line-height: 3rem;
-        }
-
-        /* Custom page footer */
-        .footer {
-            padding-top: 1.5rem;
-            color: #777;
-            border-top: 0.05rem solid #e5e5e5;
-        }
-
-        .fast .toggle-group {
-            transition: left 0.25s;
-            -webkit-transition: left 0.25s;
-        }
-
-        .jumbotron>.container>#togglePadraoAvancado {
-            display: block;
-            margin-top: 50px;
-            float: right;
-        }
-
-        .btn-light {
-            background-color: #ececec;
-        }
-
-        form {
-            display: block;
-            margin-top: 0em;
-        }
-
-        #avancado {
-            display: none;
-        }
-
-        /* Customize container */
-        @media (min-width: 48em) {
-            .container {
-                max-width: 46rem;
-            }
-        }
-
-        .container-narrow>hr {
-            margin: 2rem 0;
-        }
-
-        /* Main marketing message and sign up button */
+        /* Remove the bottom border on the jumbotron for visual effect */
         .jumbotron {
-            text-align: center;
-            border-bottom: 0.05rem solid #e5e5e5;
-            height: 450px;
+          padding: 1rem;
+          border-bottom: 0;
         }
 
-        .jumbotron .btn {
-            padding: 0.75rem 1.5rem;
-            font-size: 1.5rem;
+        #resultados > p {
+          border-bottom: 1px solid #000;
         }
 
-        .toggle-group>span.btn {
-            padding: .35rem .8rem .8rem .8rem;
+        /* Popup container - can be anything you want */
+        .popup {
+          position: relative;
+          display: inline-block;
+          cursor: pointer;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
         }
 
-        .toggle-group>label.btn {
-            padding: 0;
-            font-size: 0.75rem;
-            margin-right: 8px;
+        /* The actual popup */
+        .popup .popuptext {
+          visibility: hidden;
+          width: 300px;
+          background-color: #555;
+          color: #fff;
+          text-align: center;
+          border-radius: 6px;
+          padding: 8px 0;
+          position: absolute;
+          z-index: 1;
+          bottom: -100px;
+          left: 100%;
+          margin-left: 10px;
         }
 
-        .toggle-handle {
-            background-color: white;
-            width: 10px;
+        /* Popup arrow */
+        .popup .popuptext::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: #555 transparent transparent transparent;
         }
 
-        .row>div,
-        #parametros {
-            max-height: 320px;
+        /* Toggle this class - hide and show the popup */
+        .popup .show {
+          visibility: visible;
+          -webkit-animation: fadeIn 0.7s;
+          animation: fadeIn 0.7s;
         }
 
-        #resultados {
-            border-style: solid;
-            border-radius: 5px;
-            border-width: 1px;
-            border-color: #777;
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+
+          to {
+            opacity: 1;
+          }
         }
 
-        /* Supporting marketing content */
-        .marketing {
-            margin: 3rem 0;
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+
+          to {
+            opacity: 1;
+          }
         }
-
-        .marketing p+h4 {
-            margin-top: 1.5rem;
-        }
-
-        /* Responsive: Portrait tablets and up */
-        @media screen and (min-width: 48em) {
-
-            /* Remove the padding we set earlier */
-            .header,
-            .marketing,
-            .footer {
-                padding-right: 0;
-                padding-left: 0;
-            }
-
-            /* Space out the masthead */
-            .header {
-                margin-bottom: 2rem;
-            }
-
-            /* Remove the bottom border on the jumbotron for visual effect */
-            .jumbotron {
-                padding: 1rem;
-                border-bottom: 0;
-            }
-
-            #resultados>p {
-                border-bottom: 1px solid #000;
-            }
-
-            /* Popup container - can be anything you want */
-            .popup {
-                position: relative;
-                display: inline-block;
-                cursor: pointer;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-            }
-
-            /* The actual popup */
-            .popup .popuptext {
-                visibility: hidden;
-                width: 300px;
-                background-color: #555;
-                color: #fff;
-                text-align: center;
-                border-radius: 6px;
-                padding: 8px 0;
-                position: absolute;
-                z-index: 1;
-                bottom: -100px;
-                left: 100%;
-                margin-left: 10px;
-            }
-
-            /* Popup arrow */
-            .popup .popuptext::after {
-                content: "";
-                position: absolute;
-                top: 100%;
-                left: 50%;
-                margin-left: -5px;
-                border-width: 5px;
-                border-style: solid;
-                border-color: #555 transparent transparent transparent;
-            }
-
-            /* Toggle this class - hide and show the popup */
-            .popup .show {
-                visibility: visible;
-                -webkit-animation: fadeIn 0.7s;
-                animation: fadeIn 0.7s;
-            }
-
-            /* Add animation (fade in the popup) */
-            @-webkit-keyframes fadeIn {
-                from {
-                    opacity: 0;
-                }
-
-                to {
-                    opacity: 1;
-                }
-            }
-
-            @keyframes fadeIn {
-                from {
-                    opacity: 0;
-                }
-
-                to {
-                    opacity: 1;
-                }
-            }
-
-
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <header class="header clearfix">
-            <nav>
-                <ul class="nav nav-pills float-right">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Pontuação
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://alvesmog.github.io/sprinttoolkit/sobre.html">Sobre</a>
-                    </li>
-                </ul>
-            </nav>
-            <a href="https://alvesmog.github.io/sprinttoolkit/" style="text-decoration: none; display: inline-block;">
-                <h3 class="text-muted">Sprint toolkit</h3>
-            </a>
-        </header>
+      <header class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills float-right">
+            <li class="nav-item">
+              <a class="nav-link active" href="#"
+                >Pontuação
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="https://alvesmog.github.io/sprinttoolkit/sobre.html"
+                >Sobre</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <a
+          href="https://alvesmog.github.io/sprinttoolkit/"
+          style="text-decoration: none; display: inline-block;"
+        >
+          <h3 class="text-muted">Sprint toolkit</h3>
+        </a>
+      </header>
 
-        <main role="main">
+      <main role="main">
+        <div class="jumbotron">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6">
+                <form id="parametros">
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1"
+                      >Método de pontuação</label
+                    >
 
-            <div class="jumbotron">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <form id="parametros">
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Método de pontuação</label>
-
-                                    <div class="fa fa-question-circle popup" style="cursor: pointer"
-                                        onclick="mostrarImagem()">
-                                        <img class="popuptext" id="myPopup" src="https://i.imgur.com/rEzdhbf.png">
-                                        <img class="popuptext" id="outro"
-                                            src="https://mk0blogplataforxca8d.kinstacdn.com/wp-content/uploads/2019/09/matriz-complexidade-incerteza.png">
-                                    </div>
-
-                                    <select class="form-control" id="metodo" onchange="esconderImagem()">
-                                        <option value=1>Fibonacci</option>
-                                        <option value=2>Complexidade x Incerteza</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Quantidade de US na sprint</label>
-                                    <input type="text" class="form-control" id="qtdUS">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Pontuação a atingir</label>
-                                    <input type="text" class="form-control" id="pontuacao">
-                                </div>
-                                <div id="avancado">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="inlineRadio1" value="option1">
-                                        <label class="form-check-label" for="inlineRadio1">Escolher pontos</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="inlineRadio2" value="option2">
-                                        <label class="form-check-label" for="inlineRadio2">Inserir pontos</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                            value="option1">
-                                        <label class="form-check-label" for="inlineCheckbox1">0</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                            value="option2">
-                                        <label class="form-check-label" for="inlineCheckbox2">1</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                            value="option1">
-                                        <label class="form-check-label" for="inlineCheckbox1">2</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                            value="option2">
-                                        <label class="form-check-label" for="inlineCheckbox2">3</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                            value="option2">
-                                        <label class="form-check-label" for="inlineCheckbox2">5</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                            value="option1">
-                                        <label class="form-check-label" for="inlineCheckbox1">8</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                            value="option2">
-                                        <label class="form-check-label" for="inlineCheckbox2">13</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                            value="option1">
-                                        <label class="form-check-label" for="inlineCheckbox1">21</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                            value="option2">
-                                        <label class="form-check-label" for="inlineCheckbox2">34</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                            value="option2">
-                                        <label class="form-check-label" for="inlineCheckbox2">55</label>
-                                    </div>
-
-                                </div>
-                                <button class="btn btn-primary btn-block" id="mostrarCombinacoes"
-                                    onclick="submeterParametros(); return false;">Mostrar
-                                    combinações</button>
-                            </form>
-                        </div>
-                        <div class="col-lg-6" style="background-color: white; overflow-y: scroll;">
-                            <h6>Combinações Possíveis</h6>
-                            <div id="resultados">
-                            </div>
-                        </div>
+                    <div
+                      class="fa fa-question-circle popup"
+                      style="cursor: pointer;"
+                      onclick="mostrarImagem()"
+                    >
+                      <img
+                        class="popuptext"
+                        id="myPopup"
+                        src="https://i.imgur.com/rEzdhbf.png"
+                      />
+                      <img
+                        class="popuptext"
+                        id="outro"
+                        src="https://mk0blogplataforxca8d.kinstacdn.com/wp-content/uploads/2019/09/matriz-complexidade-incerteza.png"
+                      />
                     </div>
 
-                    <div id="togglePadraoAvancado">
-                        <input id="toggle-event" type="checkbox" unchecked data-toggle="toggle" data-on="Avançado"
-                            data-off="Padrão" data-onstyle="primary" data-offstyle="light" data-size="xs"
-                            data-width="75" data-height="15" data-style="fast">
+                    <select
+                      class="form-control"
+                      id="metodo"
+                      onchange="mudancaDeMetodo()"
+                    >
+                      <option value="1">Fibonacci</option>
+                      <option value="2">Complexidade x Incerteza</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1"
+                      >Quantidade de US na sprint</label
+                    >
+                    <input type="text" class="form-control" id="qtdUS" />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1"
+                      >Pontuação a atingir</label
+                    >
+                    <input type="text" class="form-control" id="pontuacao" />
+                  </div>
+                  <div id="avancado">
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="inlineRadioOptions"
+                        id="inlineRadio1"
+                        value="option1"
+                      />
+                      <label class="form-check-label" for="inlineRadio1"
+                        >Escolher pontos</label
+                      >
                     </div>
-
-                </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="inlineRadioOptions"
+                        id="inlineRadio2"
+                        value="option2"
+                      />
+                      <label class="form-check-label" for="inlineRadio2"
+                        >Remover pontos</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        disabled
+                        class="form-check-input"
+                        type="radio"
+                        name="inlineRadioOptions"
+                        id="inlineRadio3"
+                        value="option3"
+                      />
+                      <label class="form-check-label" for="inlineRadio3"
+                        >Inserir pontos</label
+                      >
+                    </div>
+                    <div id="avancadoOpcoesRadio"></div>
+                  </div>
+                  <button
+                    class="btn btn-primary btn-block"
+                    id="mostrarCombinacoes"
+                    onclick="submeterParametros(); return false;"
+                  >
+                    Mostrar combinações
+                  </button>
+                </form>
+              </div>
+              <div
+                class="col-lg-6"
+                style="background-color: white; overflow-y: scroll;"
+              >
+                <h6>Combinações Possíveis</h6>
+                <div id="resultados"></div>
+              </div>
             </div>
-        </main>
 
-        <footer class="footer">
-            <p>&copy; Guilherme Augusto Alves 2020</p>
-        </footer>
+            <div id="togglePadraoAvancado">
+              <input
+                id="toggle-event"
+                type="checkbox"
+                unchecked
+                data-toggle="toggle"
+                data-on="Avançado"
+                data-off="Padrão"
+                data-onstyle="primary"
+                data-offstyle="light"
+                data-size="xs"
+                data-width="75"
+                data-height="15"
+                data-style="fast"
+              />
+            </div>
+          </div>
+        </div>
+      </main>
 
+      <footer class="footer">
+        <p>&copy; Guilherme Augusto Alves 2020</p>
+      </footer>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
     <!-- Bootstrap toggle js-->
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
     <script>
+      let metodo = $("#metodo option:selected").val();
+      let qtdUS;
+      let pontuacao;
+      let imagemAtiva = 0;
+      let fibo = [1, 2, 3, 5, 8, 13, 21, 34, 55];
+      let complexidadeIncerteza = [1, 2, 3, 5, 8, 13, 20, 40, 100];
 
-        let metodo;
-        let qtdUS;
-        let pontuacao;
-        let imagemAtiva = 0;
+      //Event listeners dos radio buttons das restrições
+      $("#inlineRadio1").click(function () {
+        if ($("#inlineRadio1").is(":checked")) {
+          selecionarMetodoDeRestricao("escolher");
+        }
+      });
+      $("#inlineRadio2").click(function () {
+        if ($("#inlineRadio2").is(":checked")) {
+          selecionarMetodoDeRestricao("remover");
+        }
+      });
+      $("#inlineRadio3").click(function () {
+        if ($("#inlineRadio3").is(":checked")) {
+          selecionarMetodoDeRestricao("inserir");
+        }
+      });
 
+      function selecionarMetodoDeRestricao(opcaoRadioButton) {
+        //Ler o array o método selecionar
+        //Renderizar o array correspondente no seguinte formato
+        //Dentro do elemento #avancado
+        switch (metodo) {
+          case "1":
+            console.log("passou fibo");
+            console.log(fibo);
+            renderizarOpcoesRadio(fibo, opcaoRadioButton);
+            break;
+          case "2":
+            console.log("passou cxi");
+            renderizarOpcoesRadio(complexidadeIncerteza, opcaoRadioButton);
+            break;
+        }
+      }
 
-        function esconderImagem() {
-
-            //Ver quem estã sendo exibido e botar para hide
-
-            switch (imagemAtiva) {
-                case 1:
-                    var popup = document.getElementById("myPopup");
-                    popup.classList.toggle("show");
-                    imagemAtiva = 0;
-                    break;
-                case 2:
-                    var popup = document.getElementById("outro");
-                    popup.classList.toggle("show");
-                    imagemAtiva = 0;
-                    break;
+      function renderizarOpcoesRadio(array, opcaoRadioButton) {
+        console.log(array);
+        console.log(opcaoRadioButton);
+        $("#avancadoOpcoesRadio").empty();
+        switch (opcaoRadioButton) {
+          case "escolher":
+            for (option in array) {
+              $("#avancadoOpcoesRadio").append(`
+            <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                id="inlineCheckbox${+array[option]}"
+                value=${array[option]}
+                name="restricao"
+            />
+            <label class="form-check-label" for="inlineCheckbox${+array[
+              option
+            ]}">
+                ${+array[option]}
+            </label>
+            </div>`);
             }
-
-
-
-
-        }
-        function mostrarImagem() {
-
-            //Ja tem imagem na tela?
-
-            if (imagemAtiva != 0) {
-                //Esconder a que está ativa
-                esconderImagem();
-            } else {
-                //Já que não tem imagem na tela, renderizar a que está selecionada
-                var selectedOption = $('#metodo option:selected').val()
-                if (selectedOption == 1 && imagemAtiva == 0 || selectedOption == 1 && imagemAtiva == 1) {
-                    var popup = document.getElementById("myPopup");
-                    imagemAtiva = 1;
-                    popup.classList.toggle("show");
-                } else if (selectedOption == 2 && imagemAtiva == 0 || selectedOption == 2 && imagemAtiva == 2) {
-                    var popup = document.getElementById("outro");
-                    imagemAtiva = 2;
-                    popup.classList.toggle("show");
-                }
-
+            break;
+          case "remover":
+            for (option in array) {
+              $("#avancadoOpcoesRadio").append(`
+            <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                id="inlineCheckbox${+array[option]}"
+                value=${array[option]}
+                name="restricao"
+            />
+            <label style="color: red" class="form-check-label" for="inlineCheckbox${+array[
+              option
+            ]}">
+                ${+array[option]}
+            </label>
+            </div>`);
             }
+            break;
+        }
+      }
 
+      function mudancaDeMetodo() {
+        console.log("entrou mudanca metodo");
+        metodo =
+          $("#metodo option:selected").val() == 1
+            ? fibo
+            : complexidadeIncerteza;
+        esconderImagem();
+        console.log("passando para a mudanca de metodo: " + metodo);
+        renderizarOpcoesRadio(metodo);
+      }
+
+      function esconderImagem() {
+        //Ver quem estã sendo exibido e botar para hide
+
+        switch (imagemAtiva) {
+          case 1:
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+            imagemAtiva = 0;
+            break;
+          case 2:
+            var popup = document.getElementById("outro");
+            popup.classList.toggle("show");
+            imagemAtiva = 0;
+            break;
+        }
+      }
+
+      function mostrarImagem() {
+        //Ja tem imagem na tela?
+
+        if (imagemAtiva != 0) {
+          //Esconder a que está ativa
+          esconderImagem();
+        } else {
+          //Já que não tem imagem na tela, renderizar a que está selecionada
+          var selectedOption = $("#metodo option:selected").val();
+          if (
+            (selectedOption == 1 && imagemAtiva == 0) ||
+            (selectedOption == 1 && imagemAtiva == 1)
+          ) {
+            var popup = document.getElementById("myPopup");
+            imagemAtiva = 1;
+            popup.classList.toggle("show");
+          } else if (
+            (selectedOption == 2 && imagemAtiva == 0) ||
+            (selectedOption == 2 && imagemAtiva == 2)
+          ) {
+            var popup = document.getElementById("outro");
+            imagemAtiva = 2;
+            popup.classList.toggle("show");
+          }
+        }
+      }
+
+      function submeterParametros() {
+        $(function () {
+          $("#resultados").empty();
+
+          var button = document.getElementById("mostrarCombinacoes");
+
+          metodo = button.form.metodo.value;
+          qtdUS = parseInt(button.form.qtdUS.value);
+          pontuacao = parseInt(button.form.pontuacao.value);
+          mostrarCombinacoes(metodo, qtdUS, pontuacao);
+        });
+      }
+
+      function mostrarCombinacoes(metodo, qtdUS, pontuacao) {
+        console.log(document.getElementById("#toggle-event"));
+
+        console.log(metodo);
+        console.log(qtdUS);
+        console.log(pontuacao);
+
+        let arr;
+
+        switch (metodo) {
+          case "1":
+            arr = fibo;
+            break;
+          case "2":
+            arr = complexidadeIncerteza;
+            break;
         }
 
-        function submeterParametros() {
+        if ($("#toggle-event").prop("checked") === true) {
+          //Avançado ON
+          //Formar array com items selecionados
+          var restricoes = [];
+          $.each($("input[name='restricao']:checked"), function () {
+            console.log(parseInt($(this).val()));
+            restricoes.push(parseInt($(this).val()));
+          });
 
-            $(function () {
-                $('#resultados').empty();
+          //Verificar se é para combinar exclusivamente com os itens selecionados ou se é para remove-los da combinação:
 
-                var button = document.getElementById("mostrarCombinacoes");
+          var opcaoRadioButton = $(
+            "#avancado input[type='radio']:checked"
+          ).val();
 
-                metodo = button.form.metodo.value;
-                qtdUS = parseInt(button.form.qtdUS.value);
-                pontuacao = parseInt(button.form.pontuacao.value);
-                mostrarCombinacoes(metodo, qtdUS, pontuacao);
+          switch (opcaoRadioButton) {
+            case "option1":
+              //Esse código permite dizer que o array vai ser apenas os itens selecionados:
+              console.log("Restrições: ");
+              console.log(restricoes);
+              arr = restricoes;
+              break;
 
-            })
-
+            case "option2":
+              //Esse código permite remover os itens selecionados:
+              //Remover esses items do array que vai formar as combinações
+              for (restricao in restricoes) {
+                arr = jQuery.grep(arr, function (value) {
+                  return value != restricoes[restricao];
+                });
+              }
+              break;
+          }
         }
 
-        function mostrarCombinacoes(metodo, qtdUS, pontuacao) {
+        getComboSums(arr, qtdUS).map((el, index) => {
+          if (el == pontuacao) {
+            console.log(
+              "Soma: " +
+                el +
+                " | Indice: " +
+                index +
+                " | Array: " +
+                combRep(arr, qtdUS)[index]
+            );
+            $("#resultados").append(
+              "<p>" + combRep(arr, qtdUS)[index] + "</p>"
+            );
+          }
+        });
 
-            console.log(metodo);
-            console.log(qtdUS);
-            console.log(pontuacao);
-
-            var fibo = [1, 2, 3, 5, 8, 13, 21, 34, 55];
-            var complexidadeIncerteza = [1, 2, 3, 5, 8, 13, 20, 40, 100];
-            var arr;
-
-            switch (metodo) {
-                case "1":
-                    arr = fibo;
-                    break;
-                case "2":
-                    arr = complexidadeIncerteza;
-                    break;
-
-            }
-
-            getComboSums(arr, qtdUS).map((el, index) => {
-                if (el == pontuacao) {
-                    console.log("Soma: " + el + " | Indice: " + index + " | Array: " + combRep(arr, qtdUS)[index]);
-                    $("#resultados").append("<p>" + combRep(arr, qtdUS)[index] + "</p>");
-                }
-            })
-
-            if ($('#resultados').is(':empty')) {
-                $("#resultados").append("<p>Não há nenhuma combinação possível que atenda simultaneamente a pontuação e a quantidade de US inseridas.</p>");
-            }
-
-
+        if ($("#resultados").is(":empty")) {
+          $("#resultados").append(
+            $("#toggle-event").prop("checked") === true
+              ? "<p>Não há nenhuma combinação possível que atenda simultaneamente a pontuação, a quantidade de US inseridas e as restrições impostas. Por favor revise suas entradas.</p>"
+              : "<p>Não há nenhuma combinação possível que atenda simultaneamente a pontuação e a quantidade de US inseridas.</p>"
+          );
         }
+      }
 
-        function getComboSums(set, k) {
-            return combRep(set, k).map(function (a) {
-                var sum = 0;
-                a.forEach(function (v) { sum += v })
-                return sum;
-            });
-        }
+      function getComboSums(set, k) {
+        return combRep(set, k).map(function (a) {
+          var sum = 0;
+          a.forEach(function (v) {
+            sum += v;
+          });
+          return sum;
+        });
+      }
 
-        function combRep(arr, l) {
-            if (l === void 0) l = arr.length; // Length of the combinations
-            var data = Array(l),             // Used to store state
-                results = [];                // Array of results
-            (function f(pos, start) {        // Recursive function
-                if (pos === l) {                // End reached
-                    results.push(data.slice());  // Add a copy of data to results
-                    return;
-                }
-                for (var i = start; i < arr.length; ++i) {
-                    data[pos] = arr[i];          // Update data
-                    f(pos + 1, i);                 // Call f recursively
-                }
-            })(0, 0);                        // Start at index 0
-            return results;                  // Return results
-        }
+      function combRep(arr, l) {
+        if (l === void 0) l = arr.length; // Length of the combinations
+        var data = Array(l), // Used to store state
+          results = []; // Array of results
+        (function f(pos, start) {
+          // Recursive function
+          if (pos === l) {
+            // End reached
+            results.push(data.slice()); // Add a copy of data to results
+            return;
+          }
+          for (var i = start; i < arr.length; ++i) {
+            data[pos] = arr[i]; // Update data
+            f(pos + 1, i); // Call f recursively
+          }
+        })(0, 0); // Start at index 0
+        return results; // Return results
+      }
     </script>
     <script>
-        $(function () {
-            $('#toggle-event').change(function () {
-                if ($(this).prop('checked') === true){
-                    $('#avancado').css("display", "block");
-                } else {
-                    $('#avancado').css("display", "none");
-                }
-            })
-        })
+      $(function () {
+        $("#toggle-event").change(function () {
+          if ($(this).prop("checked") === true) {
+            $("#avancado").css("display", "block");
+          } else {
+            $("#avancado").css("display", "none");
+          }
+        });
+      });
     </script>
-</body>
-
+  </body>
 </html>
